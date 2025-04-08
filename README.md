@@ -1,3 +1,6 @@
+# 🚀 AuthAngularGuardianApp
+A basic Angular application demonstrating authentication, routing, and route guarding using Angular’s core features and Tailwind CSS. 
+
 # AuthAngularGuardianApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.

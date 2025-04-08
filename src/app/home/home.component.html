@@ -1,0 +1,81 @@
+<div class="min-h-screen bg-gray-100 py-10 px-4">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <!-- Header with welcome message -->
+      <div class="bg-indigo-600 p-6 text-white">
+        <h1 class="text-2xl font-bold">Welcome!</h1>
+        <p class="opacity-80">You have successfully logged in</p>
+      </div>
+      
+      <!-- User details card -->
+      <div class="p-6" *ngIf="currentUser">
+        <div class="flex flex-col items-center">
+          <!-- Profile image -->
+          <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-indigo-100 mb-4">
+            <img 
+              [src]="currentUser.image" 
+              alt="Profile picture"
+              class="w-full h-full object-cover"
+              onError="this.src='assets/profile-placeholder.png'"
+            >
+          </div>
+          
+          <!-- User details -->
+          <h2 class="text-xl font-bold text-gray-900">
+            {{ currentUser.firstName }} {{ currentUser.lastName }}
+          </h2>
+          
+          <p class="text-gray-500 mb-4">{{ currentUser.email }}</p>
+          
+          <!-- Additional details -->
+          <div class="w-full space-y-2 mt-4">
+            <div class="flex justify-between py-2 border-b border-gray-100">
+              <span class="text-gray-500">Username</span>
+              <span class="font-medium">{{ currentUser.username }}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-gray-100">
+              <span class="text-gray-500">Gender</span>
+              <span class="font-medium capitalize">{{ currentUser.gender }}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-gray-100">
+              <span class="text-gray-500">User ID</span>
+              <span class="font-medium">{{ currentUser.id }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Logout button -->
+        <div class="mt-8">
+          <button 
+            (click)="logout()"
+            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-8">
+        <button 
+          (click)="redirect()"
+          class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+        >
+          New 
+        </button>
+      </div>
+    </div>
+
+
+      <!-- Fallback if user data is not available -->
+      <div class="p-6 text-center text-gray-500" *ngIf="!currentUser">
+        <p>User data is not available. Please try logging in again.</p>
+        <button 
+          (click)="logout()"
+          class="mt-4 inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Return to Login
+        </button>
+      </div>
+    </div>
+  
+ 
+  
